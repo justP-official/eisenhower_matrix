@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Таблица Эйзенхауэра</title>
+</head>
+<body>
+  <header class="header">
+    <h1 class="text-h1 eisenhower-matrix__h1">Таблица Эйзенхауэра</h1>
+  </header>
+
+  <article class="eisenhower-matrix">
+    <div class="container">
+      <div class="eisenhower-matrix__wrapper">
+        <section class="eisenhower-matrix__cell urgent-and-important">
+          <header class="eisenhower-matrix__header">
+            <h2 class="text-h2">Срочное и важное</h2>
+            <button type="button" title="Свернуть" class="eisenhower-matrix__btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 320 512" fill="#fff8dc"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </button>
+          </header>
+          <div class="eisenhower-matrix__body">
+            <ol class="eisenhower-matrix__list">
+              
+            </ol>            
+          </div>
+
+        </section>
+        <section class="eisenhower-matrix__cell not-urgent-and-important">
+          <header class="eisenhower-matrix__header">
+            <h2 class="text-h2">Не срочное и важное</h2>
+            <button type="button" title="Свернуть" class="eisenhower-matrix__btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 320 512" fill="#fff8dc"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </button>
+          </header>
+          <div class="eisenhower-matrix__body">
+            <ol class="eisenhower-matrix__list">
+              
+            </ol>
+          </div>
+        </section>
+        <section class="eisenhower-matrix__cell urgent-and-not-important">
+          <header class="eisenhower-matrix__header">
+            <h2 class="text-h2">Срочное и не важное</h2>
+            <button type="button" title="Свернуть" class="eisenhower-matrix__btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 320 512" fill="#fff8dc"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </button>
+          </header>
+          <div class="eisenhower-matrix__body">
+            <ol class="eisenhower-matrix__list">
+              
+            </ol>
+          </div>
+        </section>
+        <section class="eisenhower-matrix__cell not-urgent-and-not-important">
+          <header class="eisenhower-matrix__header">
+            <h2 class="text-h2">Не срочное и не важное</h2>
+            <button type="button" title="Свернуть" class="eisenhower-matrix__btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 320 512" fill="#fff8dc"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </button>
+          </header>
+          <div class="eisenhower-matrix__body">
+            <ol class="eisenhower-matrix__list">
+              
+            </ol>
+          </div>
+
+        </section>
+    </div>
+    </div>
+  </article>
+
+  <article class="modal" id="add-window">
+    <section class="modal__content">
+      <div class="modal__header">
+        <h2 class="text-h2">Добавить задачу</h2>
+        <button type="button" class="modal__close">x</button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__flex">
+          <div class="modal__flex-left">
+            <form action="" class="form">
+              <div class="form__item">
+                <label class="form__label" for="task">
+                  <span class="form__text">Задача: </span>
+                </label>
+                <input type="text" class="form__input" id="task" placeholder="Например, сделать сайт" required autocomplete="off">
+              </div>
+              <div class="form__item">
+                <span class="form__text">Срочно: </span>
+                <div class="wrapper">
+                  <label class="form__label">
+                    <span class="form__text">Да</span><input type="radio" name="urgent" value="yes" class="form__radiobutton" required>
+                  </label>
+                  <label class="form__label">
+                    <span class="form__text">Нет</span><input type="radio" name="urgent" value="no" class="form__radiobutton">
+                  </label>
+                </div>
+                
+              </div>
+              <div class="form__item">
+                <span class="form__text">Важно: </span>
+                <div class="wrapper">
+                  <label class="form__label">
+                    <span class="form__text">Да</span><input type="radio" name="important" value="yes" class="form__radiobutton" required>
+                  </label>
+                  <label class="form__label">
+                    <span class="form__text">Нет</span><input type="radio" name="important" value="no" class="form__radiobutton">
+                  </label>
+                </div>
+
+              </div>
+              <div class="form__item">
+                <button type="button" class="form__submit">Добавить</button>
+              </div>
+            </form>            
+          </div>
+          <div class="modal__flex-right">
+            <div class="how-to-use">
+              <h3 class="text-h3 how-to-use__h3">Что это?</h3>
+              <div class="how-to-use__text">
+                Матрица Эйзенхауэра представляет собой четыре квадранта, основанием которых служат две оси — это ось важности (по вертикали) и ось срочности (по горизонтали). В итоге получается, что каждый квадрант отличается своими качественными показателями. В каждый из квадрантов записываются все задачи и дела, благодаря чему образуется предельно ясная и объективная картина того, чем следует заняться в первую очередь, чем – во вторую, а чем вообще заниматься не стоит.
+              </div>
+              <h3 class="text-h3 how-to-use__h3">Как пользоваться?</h3>
+              <div class="how-to-use__text">
+                Перед тем, как добавить новую задачу, задайте себе два вопроса: "Это срочно?" и "Это важно?".
+                <br>
+                В категорию "Срочное и важное" следует добавить:
+                <ul class="how-to-use__list">
+                  <li>Горящие проекты,</li>
+                  <li>проблемы со здоровьем,</li>
+                  <li>экстренные ситуации.</li>
+                </ul>
+                В категорию "Не срочное и важное" следует добавить:
+                <ul class="how-to-use__list">
+                  <li>Основная деятельность в бизнесе или на работе,</li>
+                  <li>повседневные дела, которые нельзя не делать.</li>
+                </ul>
+                В категорию "Срочное и не важное" следует добавить:
+                <ul class="how-to-use__list">
+                  <li>Рутинные дела</li>
+                  <li>большинство звонков,</li>
+                  <li>прочие отвлекающие факторы</li>
+                </ul>
+                В категорию "Не срочное и не важное" следует добавить:
+                <ul class="how-to-use__list">
+                  <li>Развлечения,</li>
+                  <li>«пожиратели времени».</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>      
+    </section>
+
+  </article>
+
+  <button class="add" type="button">+</button>
+
+  <footer class="footer">
+    &copy; Таблица Эйзенхауэра by justP
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
