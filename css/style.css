@@ -371,4 +371,14 @@ body {
     width: 100%;
   }
 
+  .form__item {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .form__input {
+    margin-left: 0;
+    text-align: left;
+  }
+
 }
