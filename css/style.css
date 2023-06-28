@@ -342,6 +342,45 @@ body {
   color: #7f7777;
 }
 
+/* Всплывающее уведомление */
+
+.popup {
+  position: relative;
+}
+
+.popup__text {
+  position: absolute;
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  text-transform: none;
+}
+
+.popup__text.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
 @media screen and (max-width: 768px){
   .eisenhower-matrix__wrapper {
     grid-template-columns: repeat(1, 1fr);
@@ -359,7 +398,7 @@ body {
   }
 
   .remove {
-    display: inline;
+    display: inline-block;
   }
 
   .modal__flex {

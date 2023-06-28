@@ -62,45 +62,58 @@ create_btn.addEventListener("click", function() {
 
   let tasks = JSON.parse(localStorage.getItem("tasks"))
 
+  let popup = document.querySelector(".popup__text")
+
   if (isUrgent == 'yes' && isImportant == 'yes') {
     if (!tasks['urgent-important'].includes(task)) {
       tasks['urgent-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))      
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+      modal.style.display = "none"
     } else {
-      alert("Упс! Кажется, эта задача уже поставлена. Выполни её или добавь другую :)")
+      popup.classList.toggle("show")
+      setTimeout(hidePopup, 5000)
     }
   } else if (isUrgent == 'no' && isImportant == 'yes') {
     if (!tasks['not-urgent-important'].includes(task)) {
       tasks['not-urgent-important'].push(task)
       localStorage.setItem("tasks", JSON.stringify(tasks))
+      modal.style.display = "none"
     } else {
-      alert("Упс! Кажется, эта задача уже поставлена. Выполни её или добавь другую :)")
+      popup.classList.toggle("show")
+      setTimeout(hidePopup, 5000)
     }
   } else if (isUrgent == 'yes' && isImportant == 'no') {
     if (!tasks['urgent-not-important'].includes(task)) {
       tasks['urgent-not-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks)) 
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+      modal.style.display = "none" 
     } else {
-      alert("Упс! Кажется, эта задача уже поставлена. Выполни её или добавь другую :)")
+      popup.classList.toggle("show")
+      setTimeout(hidePopup, 5000)
     }
    
   } else if (isUrgent == 'no' && isImportant == 'no') {
     if (!tasks['not-urgent-not-important'].includes(task)) {
       tasks['not-urgent-not-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))        
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+      modal.style.display = "none"        
     } else {
-      alert("Упс! Кажется, эта задача уже поставлена. Выполни её или добавь другую :)")
+      popup.classList.toggle("show")
+      setTimeout(hidePopup, 5000)
     }
   }
 
   showTasks()
 
-  modal.style.display = "none"
-
   document.querySelector('.form').reset()
 })
 
 showTasks()
+
+function hidePopup () {
+  let popup = document.querySelector(".popup__text")
+  popup.classList.remove("show")
+}
 
 function showTasks() {
   let tasks = JSON.parse(localStorage.getItem("tasks"))
