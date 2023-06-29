@@ -64,48 +64,27 @@ create_btn.addEventListener("click", function() {
 
   let popup = document.querySelector(".popup__text")
 
-  if (isUrgent == 'yes' && isImportant == 'yes') {
-    if (!tasks['urgent-important'].includes(task)) {
+  if (!tasks['urgent-important'].includes(task) && !tasks['not-urgent-important'].includes(task) && !tasks['urgent-not-important'].includes(task) && !tasks['not-urgent-not-important'].includes(task)) {
+    if (isUrgent == 'yes' && isImportant == 'yes') {
       tasks['urgent-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))
-      modal.style.display = "none"
-    } else {
-      popup.classList.toggle("show")
-      setTimeout(hidePopup, 5000)
-    }
-  } else if (isUrgent == 'no' && isImportant == 'yes') {
-    if (!tasks['not-urgent-important'].includes(task)) {
+    } else if (isUrgent == 'no' && isImportant == 'yes') {
       tasks['not-urgent-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))
-      modal.style.display = "none"
-    } else {
-      popup.classList.toggle("show")
-      setTimeout(hidePopup, 5000)
-    }
-  } else if (isUrgent == 'yes' && isImportant == 'no') {
-    if (!tasks['urgent-not-important'].includes(task)) {
+    } else if (isUrgent == 'yes' && isImportant == 'no') {
       tasks['urgent-not-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))
-      modal.style.display = "none" 
     } else {
-      popup.classList.toggle("show")
-      setTimeout(hidePopup, 5000)
-    }
-   
-  } else if (isUrgent == 'no' && isImportant == 'no') {
-    if (!tasks['not-urgent-not-important'].includes(task)) {
       tasks['not-urgent-not-important'].push(task)
-      localStorage.setItem("tasks", JSON.stringify(tasks))
-      modal.style.display = "none"        
-    } else {
-      popup.classList.toggle("show")
-      setTimeout(hidePopup, 5000)
     }
+
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+    modal.style.display = "none"
+    document.querySelector('.form').reset()
+
+  } else {
+    popup.classList.add("show")
+    setTimeout(hidePopup, 3000)
   }
 
   showTasks()
-
-  document.querySelector('.form').reset()
 })
 
 showTasks()
