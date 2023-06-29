@@ -28,14 +28,38 @@ let close_btn = document.querySelector(".modal__close");
 
 add_btn.addEventListener("click", function() {
   modal.style.display = "block";
+
+  let task_examples = ['написать статью для блога', 
+                       'договориться о встрече с клиентом', 
+                       'навести порядок на рабочем столе', 
+                       'позвонить другу', 
+                       'сделать уборку в квартире', 
+                       'оплатить счета за коммунальные услуги', 
+                       'выгулять собаку', 
+                       'проверить почту',
+                       'сходить на прогулку',
+                       'сделать фотографии',
+                       'посмотреть фильм',
+                       'разобрать накопившиеся бумаги',
+                       'проветрить помещение', 
+                       'помыть посуду',
+                       'вынести мусор',
+                       'приготовить обед',
+                       'сходить в магазин']
+
+  let input = document.querySelector(".form__input")
+  
+  input.setAttribute('placeholder', `Например, ${task_examples[Math.floor(Math.random() * (task_examples.length - 1))]}`)
 })
 
 close_btn.addEventListener("click", function() {
   modal.style.display = "none";
+  document.querySelector('.form').reset()
 })
 
 modal.addEventListener("click", function() {
   modal.style.display = "none";
+  document.querySelector('.form').reset()
 })
 
 modal_content.addEventListener("click", function(e) {
@@ -45,6 +69,7 @@ modal_content.addEventListener("click", function(e) {
 document.addEventListener("keyup", function(e) {
   if (e.key == 'Escape') {
     modal.style.display = "none";
+    document.querySelector('.form').reset()
   }
 })
 
