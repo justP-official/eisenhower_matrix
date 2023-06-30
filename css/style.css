@@ -87,7 +87,6 @@ body {
 .eisenhower-matrix__wrapper {
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  /* grid-template-rows: repeat(2, 43vh); */
   gap: 16px;
 }
 
@@ -217,6 +216,7 @@ body {
   background-color: #c7d8ed;
   color: #fff;
   font-size: 32px;
+  line-height: 1;
 }
 
 /* Модальное окно */
@@ -249,19 +249,33 @@ body {
   box-shadow: 0 4px 4px -4px #555;
 }
 
-.modal__close {
+.modal__show-tips, .modal__close {
   background-color: transparent;
   border: none;
   font-size: 24px;
   cursor: pointer;
+  text-transform: uppercase;
 }
+
+.modal__show-tips {
+  border-radius: 50%;
+  border: 1px solid #000;
+  color: #000;
+  line-height: 1;
+}
+
+.modal__show-tips.active {
+  border-color: #424242;
+  color: #424242;
+}
+
 .modal__body {
   padding: 16px;
 }
 
 .modal__flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   gap: 8px;
 }
@@ -269,6 +283,16 @@ body {
 .modal__flex-left, .modal__flex-right {
   width: 50%;
 }
+
+.modal__flex-right {
+  display: none;
+}
+
+.modal__flex-right.show {
+  display: block;
+}
+
+/* Раздел "Как пользоваться?" */
 
 .how-to-use {
   padding: 4px;
@@ -381,7 +405,7 @@ body {
   to {opacity:1 ;}
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .eisenhower-matrix__wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -392,7 +416,7 @@ body {
     background-color: transparent;
   }
 
-  .eisenhower-matrix__header.hidden ~ .eisenhower-matrix__body{
+  .eisenhower-matrix__header.hidden ~ .eisenhower-matrix__body {
     display: none;
     height: 0;
   }

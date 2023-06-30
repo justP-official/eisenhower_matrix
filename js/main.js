@@ -194,3 +194,10 @@ document.querySelectorAll(".eisenhower-matrix__list").forEach((list) => {
     } 
   })
 })
+
+let howToUse_btn = document.querySelector(".modal__show-tips")
+
+howToUse_btn.addEventListener("click", function() {
+  document.querySelector(".modal__flex-right").classList.toggle("show")
+  this.classList.toggle("active")
+})
