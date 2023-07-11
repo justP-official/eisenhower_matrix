@@ -84,32 +84,22 @@ create_btn.addEventListener("click", function() {
       isUrgent = document.querySelector(".form__radiobutton[name='urgent']:checked").value,
       isImportant = document.querySelector(".form__radiobutton[name='important']:checked").value;
 
-
   let tasks = JSON.parse(localStorage.getItem("tasks"))
 
   let popup = document.querySelector(".popup__text")
+  let condition = `${isUrgent}-${isImportant}`
 
-  if (!tasks['urgent-important'].includes(task) && !tasks['not-urgent-important'].includes(task) && !tasks['urgent-not-important'].includes(task) && !tasks['not-urgent-not-important'].includes(task)) {
-    if (isUrgent == 'yes' && isImportant == 'yes') {
-      tasks['urgent-important'].push(task)
-    } else if (isUrgent == 'no' && isImportant == 'yes') {
-      tasks['not-urgent-important'].push(task)
-    } else if (isUrgent == 'yes' && isImportant == 'no') {
-      tasks['urgent-not-important'].push(task)
-    } else {
-      tasks['not-urgent-not-important'].push(task)
-    }
-
-    localStorage.setItem("tasks", JSON.stringify(tasks))
-    modal.style.display = "none"
-    document.querySelector('.form').reset()
-
-  } else {
+  if (tasks[condition].includes(task)) {
     popup.classList.add("show")
     setTimeout(hidePopup, 3000)
+  } else {
+    tasks[condition].push(task)
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+    modal.style.display = "none"
+    document.querySelector('.form').reset()    
   }
-
   showTasks()
+
 })
 
 showTasks()
@@ -122,30 +112,19 @@ function hidePopup () {
 function showTasks() {
   let tasks = JSON.parse(localStorage.getItem("tasks"))
 
-  let urgentAndImportantList = document.querySelector('.urgent-and-important .eisenhower-matrix__body .eisenhower-matrix__list'),
-      notUrgentAndImportantList = document.querySelector('.not-urgent-and-important .eisenhower-matrix__body .eisenhower-matrix__list'),
-      urgentAndNotImportantList = document.querySelector('.urgent-and-not-important .eisenhower-matrix__body .eisenhower-matrix__list'),
-      notUrgentAndNotImportantList = document.querySelector('.not-urgent-and-not-important .eisenhower-matrix__body .eisenhower-matrix__list')
+  let task_lists = document.querySelectorAll('.eisenhower-matrix__list')
 
-  urgentAndImportantList.innerHTML = ''
-  notUrgentAndImportantList.innerHTML = ''
-  urgentAndNotImportantList.innerHTML = ''
-  notUrgentAndNotImportantList.innerHTML = ''
+  task_lists.forEach((task_list) => {
+    task_list.innerHTML = ''
+  })
 
-  for (let i = 0; i < tasks['urgent-important'].length; i++) {
-    urgentAndImportantList.insertAdjacentHTML("beforeend", `<li class="eisenhower-matrix__list-item">${tasks['urgent-important'][i]} <span class="remove" data-delete="${tasks['urgent-important'][i]}">X</span></li>`)
-  }
-  
-  for (let i = 0; i < tasks['not-urgent-important'].length; i++) {
-    notUrgentAndImportantList.insertAdjacentHTML("beforeend", `<li class="eisenhower-matrix__list-item">${tasks['not-urgent-important'][i]} <span class="remove" data-delete="${tasks['not-urgent-important'][i]}">X</span></li>`)
-  }
-
-  for (let i = 0; i < tasks['urgent-not-important'].length; i++) {
-    urgentAndNotImportantList.insertAdjacentHTML("beforeend", `<li class="eisenhower-matrix__list-item">${tasks['urgent-not-important'][i]} <span class="remove" data-delete="${tasks['urgent-not-important'][i]}">X</span></li>`)
-  }
-  
-  for (let i = 0; i < tasks['not-urgent-not-important'].length; i++) {
-    notUrgentAndNotImportantList.insertAdjacentHTML("beforeend", `<li class="eisenhower-matrix__list-item">${tasks['not-urgent-not-important'][i]} <span class="remove" data-delete="${tasks['not-urgent-not-important'][i]}">X</span></li>`)
+  for (let tasks_keys of Object.keys(tasks)) {
+    for (let i = 0; i < tasks[tasks_keys].length; i++) {
+      document.querySelector(`.${tasks_keys} .eisenhower-matrix__list`).insertAdjacentHTML("beforeend", 
+      `<li class="eisenhower-matrix__list-item">${tasks[tasks_keys][i]}
+        <span class="remove" data-delete="${tasks[tasks_keys][i]}">X</span>
+      </li>`)
+    }
   }
 }
 
@@ -155,7 +134,7 @@ document.querySelectorAll(".eisenhower-matrix__list").forEach((list) => {
 
     let tasks = JSON.parse(localStorage.getItem("tasks"))
     
-    if (e.target.closest(".eisenhower-matrix__cell").classList.contains("urgent-and-important")) {
+    if (e.target.closest(".eisenhower-matrix__cell").classList.contains("urgent-important")) {
 
       for (let i = 0; i < tasks['urgent-important'].length; i++) {
         if (e.target.dataset.delete == tasks['urgent-important'][i]) {
@@ -164,7 +143,7 @@ document.querySelectorAll(".eisenhower-matrix__list").forEach((list) => {
           showTasks()
         }
       }
-    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("not-urgent-and-important")) {
+    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("not-urgent-important")) {
 
         for (let i = 0; i < tasks['not-urgent-important'].length; i++) {
           if (e.target.dataset.delete == tasks['not-urgent-important'][i]) {
@@ -173,7 +152,7 @@ document.querySelectorAll(".eisenhower-matrix__list").forEach((list) => {
             showTasks()
           }
         }      
-    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("urgent-and-not-important")) {
+    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("urgent-not-important")) {
 
         for (let i = 0; i < tasks['urgent-not-important'].length; i++) {
           if (e.target.dataset.delete == tasks['urgent-not-important'][i]) {
@@ -182,7 +161,7 @@ document.querySelectorAll(".eisenhower-matrix__list").forEach((list) => {
             showTasks()
           }
         }      
-    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("not-urgent-and-not-important")) {
+    } else if (e.target.closest(".eisenhower-matrix__cell").classList.contains("not-urgent-not-important")) {
 
         for (let i = 0; i < tasks['not-urgent-not-important'].length; i++) {
           if (e.target.dataset.delete == tasks['not-urgent-not-important'][i]) {

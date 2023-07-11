@@ -165,40 +165,40 @@ body {
 }
 
 
-.urgent-and-important .eisenhower-matrix__header {
+.urgent-important .eisenhower-matrix__header {
   background-color: #852431;
 }
 
-.urgent-and-important .eisenhower-matrix__body {
+.urgent-important .eisenhower-matrix__body {
   background-color: #d66978;
   color: #fff8dc;
 }
 
-.not-urgent-and-important .eisenhower-matrix__header {
+.not-urgent-important .eisenhower-matrix__header {
   background-color: #7f8a73;
 }
 
-.not-urgent-and-important .eisenhower-matrix__body {
+.not-urgent-important .eisenhower-matrix__body {
   background-color: #66cdaa;
   color: #8b0000;
 }
 
-.urgent-and-not-important .eisenhower-matrix__header {
+.urgent-not-important .eisenhower-matrix__header {
   background-color: #7a3300;
   color: #fff8dc;
 }
 
-.urgent-and-not-important .eisenhower-matrix__body {
+.urgent-not-important .eisenhower-matrix__body {
   background-color: #cc7000;
   color: #fff8dc;
 }
 
-.not-urgent-and-not-important .eisenhower-matrix__header {
+.not-urgent-not-important .eisenhower-matrix__header {
   background-color: #4b64a2;
   color: #fff;
 }
 
-.not-urgent-and-not-important .eisenhower-matrix__body {
+.not-urgent-not-important .eisenhower-matrix__body {
   background-color: #e8edf9;
   color: #8b0000;
 }
